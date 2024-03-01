@@ -11,7 +11,7 @@ const telegramToken = process.env.TELEGRAM_TOKEN || "YOUR_TOKEN_HERE";
 const bot = new telebot(telegramToken);
 
 // Escuchar los mensajes entrantes y responder con "Hello World!"
-bot.on("message", (msg) => {
+bot.on("text", (msg) => {
   const chatId = msg.chat.id;
   bot.sendMessage(chatId, "Hello World!");
 });
