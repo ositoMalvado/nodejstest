@@ -1,12 +1,8 @@
-﻿import express from "express";
-const app = express();
-// Important! Set the port using the PORT environment variable
-const port = process.env.PORT ?? 3000;
+﻿import telebot from "telebot";
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
-
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
+const bot = new telebot(process.env.TELEGRAM_TOKEN || "YOUR_TOKEN_HERE");
+bot.on("message", (msg) => {
+  const chatId = msg.chat.id;
+  bot.sendMessage(chatId, "Hello World!");
+})
+bot.start();
